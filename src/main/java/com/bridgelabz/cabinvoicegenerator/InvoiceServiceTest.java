@@ -30,11 +30,11 @@ public class InvoiceServiceTest {
 	}
 
 	@Test
-	public void givenMultipleRides_whenCalculateFare_ShouldReturnAggregateTotalFare() {
+	public void givenUserIdWhenAdded_ShouldReturnInvoice() {
 		CabInvoiceGenerator invoiceService = new CabInvoiceGenerator();
-		Rides[] rides = { new Rides(2.0, 5), new Rides(1.0, 5), new Rides(0.1, 1) };
-		InvoiceSummary expectedSummary = new InvoiceSummary(3, 45);
-		InvoiceSummary summary = invoiceService.calculateFare(rides);
-		Assert.assertEquals(expectedSummary, summary);
+		Rides[] ride = { new Rides(2.0, 5, "1"), new Rides(1.0, 5, "2"), new Rides(0.1, 1,"3") };
+		Invoice invoice = invoiceService.CabInvoice(ride, "1");
+		Invoice excepted = new Invoice("1", 45);
+		Assert.assertEquals(excepted, invoice);
 	}
 }
